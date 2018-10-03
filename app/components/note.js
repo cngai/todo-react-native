@@ -12,8 +12,8 @@ export default class Note extends Component {
 
       <View key={this.props.keyval} style={styles.note}>
         <View style={styles.noteTextBorder}>
-          <Text style={styles.noteText}>{this.props.val.date}</Text>
-          <Text style={styles.noteText}>{this.props.val.note}</Text>
+          <Text style={styles.noteTextDate}>{this.props.val.date}</Text>
+          <Text style={styles.noteTextNote}>{this.props.val.note}</Text>
         </View>
         <TouchableOpacity onPress={this.props.deleteMethod} style={styles.noteDelete}>
           <Text style={styles.noteDeleteText}>X</Text>
@@ -34,22 +34,28 @@ const styles = StyleSheet.create({
   },
   noteTextBorder: {
       borderLeftWidth: 10,
-      borderLeftColor: '#E91E63'
+      borderLeftColor: '#002d77'
   },
-  noteText: {
-      paddingLeft: 10
+  noteTextDate: {
+      paddingLeft: 10,
+      fontSize: 10
+  },
+  noteTextNote: {
+      paddingLeft: 10,
+      fontSize: 20
   },
   noteDelete: {
       position: 'absolute',
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#2980b9',
+      backgroundColor: '#002d77',
       padding: 10,
       top: 10,
       bottom: 10,
       right: 10
   },
   noteDeleteText: {
-      color: 'white'
+      color: 'white',
+      fontWeight: 'bold'
   }
 });

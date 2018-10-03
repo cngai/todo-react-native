@@ -10,6 +10,8 @@ import {
 
 import Note from './note';
 
+
+
 export default class Main extends Component {
 
   constructor(props) {
@@ -31,7 +33,7 @@ export default class Main extends Component {
       <View style={styles.container}>
 
         <View style={styles.header}>
-          <Text style={styles.headerText}>- Noter -</Text>
+          <Text style={styles.headerText}>To Do List</Text>
         </View>
 
         <ScrollView style={styles.scrollContainer}>
@@ -44,7 +46,7 @@ export default class Main extends Component {
             style={styles.textInput}
             onChangeText={(noteText) => this.setState({noteText})}
             value={this.state.noteText}
-            placeholder='>note'
+            placeholder='Add Note'
             placeholderTextColor='white'
             underlineColorAndroid='transparent'>
 
@@ -65,9 +67,9 @@ export default class Main extends Component {
     if (this.state.noteText) {
       var d = new Date();
       this.state.noteArray.push({
-        'date': d.getFullYear() +
-        "/" + (d.getMonth() + 1) +
-        "/" + d.getDate(),
+        'date': (d.getMonth() + 1) +
+        "/" + d.getDate() +
+        "/" + d.getFullYear(),        
         'note': this.state.noteText
       });
       this.setState({ noteArray: this.state.noteArray });
@@ -86,7 +88,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-      backgroundColor: '#E91E63',
+      backgroundColor: '#002d77',
       alignItems: 'center',
       justifyContent:'center',
       borderBottomWidth: 10,
@@ -94,8 +96,10 @@ const styles = StyleSheet.create({
   },
   headerText: {
       color: 'white',
-      fontSize: 18,
-      padding: 26
+      fontSize: 30,
+      padding: 20,
+      paddingBottom: 10,
+      fontFamily: 'Futura'
   },
   scrollContainer: {
       flex: 1,
@@ -114,16 +118,17 @@ const styles = StyleSheet.create({
       padding: 20,
       backgroundColor: '#252525',
       borderTopWidth:2,
-      borderTopColor: '#ededed'
+      borderTopColor: '#ededed',
+      fontStyle: 'italic'
   },
   addButton: {
       position: 'absolute',
       zIndex: 11,
-      right: 20,
-      bottom: 90,
-      backgroundColor: '#E91E63',
-      width: 70,
-      height: 70,
+      right: 15,
+      bottom: 70,
+      backgroundColor: '#002d77',
+      width: 40,
+      height: 40,
       borderRadius: 35,
       alignItems: 'center',
       justifyContent: 'center',
@@ -131,6 +136,7 @@ const styles = StyleSheet.create({
   },
   addButtonText: {
       color: '#fff',
-      fontSize: 24
+      fontSize: 24,
+      fontWeight: 'bold'
   }
 });
